@@ -21,6 +21,7 @@ import (
 
 var _ mempool.Mempool = (*TxMempool)(nil)
 
+// noop test change
 // TxMempoolOption sets an optional parameter on the TxMempool.
 type TxMempoolOption func(*TxMempool)
 
