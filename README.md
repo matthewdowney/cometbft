@@ -1,30 +1,30 @@
-# dYdX Fork of Tendermint
+# dYdX Fork of CometBFT
 
-This is a lightweight fork of Tendermint. The current version of the forked code resides on the [default branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches#about-the-default-branch).
+This is a lightweight fork of CometBFT. The current version of the forked code resides on the [default branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches#about-the-default-branch).
 
 ## Making Changes to the Fork
 
 1. Open a PR against the current default branch (i.e. `dydx-fork-v0.37.0-rc2`).
 2. Get approval, and merge.
 3. After merging, update the `v4` repository's `go.mod`, and `go.sum` files with your merged `$COMMIT_HASH`.
-4. (In `dydxprotocol/v4`) `go mod edit -replace github.com/tendermint/tendermint=github.com/dydxprotocol/tendermint@$COMMIT_HASH`
+4. (In `dydxprotocol/v4`) `go mod edit -replace github.com/tendermint/tendermint=github.com/dydxprotocol/cometbft@$COMMIT_HASH`
 5. (In `dydxprotocol/v4`) `go mod tidy`
 6. Open a PR in `dydxprotocol/v4` to bump the version of the fork.
 
 ## Fork maintenance
 
-We'd like to keep the `master` branch up to date with `tendermint/tendermint`. You can utilize GitHub's [sync fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) button to accomplish this. ⚠️ Please only use this on the `master` branch, not on the fork branches as it will discard our commits.⚠️
+We'd like to keep the `main` branch up to date with `cometbft/cometbft`. You can utilize GitHub's [sync fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) button to accomplish this. ⚠️ Please only use this on the `main` branch, not on the fork branches as it will discard our commits.⚠️
 
 Note that this doesn't pull in upstream tags, so in order to do this follow these steps:
 1. `git fetch upstream`
 2. `git push --tags`
 
-## Updating Tendermint to new versions
+## Updating CometBFT to new versions
 
-When a new version of Tendermint is published, we may want to adopt the changes in our fork. This process can be somewhat tedious, but below are the recommended steps to accomplish this.
+When a new version of CometBFT is published, we may want to adopt the changes in our fork. This process can be somewhat tedious, but below are the recommended steps to accomplish this.
 
-1. Ensure the `master` branch and all tags are up to date by following the steps above in "Fork maintenance".
-2. Create a new branch off the desired Tendermint commit using tags. `git checkout -b dydx-fork-$VERSION <Tendermint repo's tag name>`. The new branch should be named something like `dydx-fork-$VERSION` where `$VERSION` is the version of Tendermint being forked (should match the Tendermint repo's tag name). i.e. `dydx-fork-v0.37.0-rc2`.
+1. Ensure the `main` branch and all tags are up to date by following the steps above in "Fork maintenance".
+2. Create a new branch off the desired CometBFT commit using tags. `git checkout -b dydx-fork-$VERSION <CometBFT repo's tag name>`. The new branch should be named something like `dydx-fork-$VERSION` where `$VERSION` is the version of CometBFT being forked (should match the CometBFT repo's tag name). i.e. `dydx-fork-v0.37.0-rc2`.
 3. Push the new branch.
 4. Open a PR which cherry-picks each commit in the current default branch, in order, on to the new `dydx-fork-$VERSION` branch (note: you may want to consider creating multiple PRs for this process if there are difficulties or merge conflicts). For example, `git cherry-pick <commit hash>`.
 5. Get approval, and merge.
