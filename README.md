@@ -9,7 +9,7 @@ This is a lightweight fork of CometBFT. The current version of the forked code r
 3. After merging, update the `v4` repository's `go.mod`, and `go.sum` files with your merged `$COMMIT_HASH`.
 4. (In `dydxprotocol/v4`) `go mod edit -replace github.com/tendermint/tendermint=github.com/dydxprotocol/cometbft@$COMMIT_HASH`
 5. (In `dydxprotocol/v4`) `go mod tidy`
-6. (In `dydxprotocol/v4`) update package references in `mocks/Makefile`. See (here)[https://github.com/dydxprotocol/v4/pull/848] for an example.
+6. (In `dydxprotocol/v4`) update package references in `mocks/Makefile`. See [here](https://github.com/dydxprotocol/v4/pull/848) for an example.
 7. Open a PR in `dydxprotocol/v4` to bump the version of the fork.
 
 ## Fork maintenance
