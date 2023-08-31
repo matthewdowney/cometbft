@@ -691,7 +691,9 @@ func (mem *CListMempool) recheckTxs() {
 		// short term `PlaceOrder` or `CancelOrder` message,
 		// remove it from the mempool instead of rechecking.
 		if IsShortTermClobOrderTransaction(memTx.tx, mem.logger) {
-			mem.RemoveTxByKey(memTx.tx.Key())
+			if err := mem.RemoveTxByKey(memTx.tx.Key()); err != nil {
+				mem.logger.Debug("Transaction could not be removed from mempool", "err", err)
+			}
 		}
 	}
 
